@@ -1,4 +1,4 @@
-# bilibli热门数据爬虫 
+# bilibli视频排行榜数据爬虫 
 
 该项目基于python对bilibli的热门排行top100视频的信息进行抓取，并以此为基础抓取top100up主信息及弹幕信息。
 
