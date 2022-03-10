@@ -21,7 +21,6 @@ def get_bvid():
 
 
 def get_oid(bvid):
-
     try:
         response = requests.get('https://api.bilibili.com/x/player/pagelist?bvid='+str(bvid)+'&jsonp=jsonp',headers=headers)
         if response.status_code == 200:
@@ -42,14 +41,13 @@ def get_page(oid,dt):
 
 
 def parse_page(response):
-    list = []
+# 将抓取结果按列拆分得到结果列表，正则取每个元素的中文部分。
     result = response.split('\n')
     for i in result:
         pattern = re.compile('([\u4e00-\u9fa5]+)')
         data = re.findall(pattern,i)
         if data:
-            list.append(data[0])
-    return list
+            yield data
 
 
 def save_data(data):
