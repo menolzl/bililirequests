@@ -3,14 +3,17 @@ import pandas as pd
 
 headers = {"Cookie":"","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"}
 
+# proxy = '...:'
+# proxies = {'http':'http://'+proxy,'https':'https://'+proxy,}
+
 def get_url():
     data = pd.read_excel('b站原创top.xlsx', sheet_name='全区')
     uid = list(data['up主ID'])
     return uid
 
 def get_page(uid):
-    response1 = requests.get('https://api.bilibili.com/x/space/acc/info?mid=' + str(uid) + '&jsonp=jsonp', headers=headers)
-    response2 = requests.get('https://api.bilibili.com/x/relation/stat?vmid=' + str(uid) + '&jsonp=jsonp', headers=headers)
+    response1 = requests.get('https://api.bilibili.com/x/space/acc/info?mid=' + str(uid) + '&jsonp=jsonp',proxies=proxies,headers=headers)
+    response2 = requests.get('https://api.bilibili.com/x/relation/stat?vmid=' + str(uid) + '&jsonp=jsonp',proxies=proxies,headers=headers)
     return response1.json() , response2.json()
 
 
