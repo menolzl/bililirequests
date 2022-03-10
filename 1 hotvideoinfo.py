@@ -5,7 +5,7 @@ import pandas as pd
 
 base_url = 'https://www.bilibili.com/v/popular/rank/'
 
-headers = {'Cookie':'innersign=0; buvid3=472C2412-7550-D2CF-70F4-A1DD208F295B66351infoc; i-wanna-go-back=-1; b_lsid=8C5CBB4B_17F6A263F35; _uuid=986D515D-6176-79A4-28C8-F5105732F8C91065827infoc; buvid4=18C58428-3E9A-3118-941E-33F16F6E873A67496-022030823-9E/zTJJxAKuUmUVtWG83gQ%3D%3D; fingerprint=dfac9c33c01ee95d803470847cb6af0d; buvid_fp_plain=undefined; buvid_fp=6a1fdf384fa4103e094963ef3933bdb1; SESSDATA=800d70de%2C1662305379%2C01502%2A31; bili_jct=a0450f50fe222d23a1a016452f04e5f9; DedeUserID=1379528; DedeUserID__ckMd5=e69363711611e319; sid=i7mi2e85; b_ut=5; LIVE_BUVID=AUTO1816467533827294; CURRENT_BLACKGAP=0; CURRENT_FNVAL=80','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
+headers = {'Cookie':'','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
 
 dict = {'全区':'all','国创相关':'guochuang','动画':'douga','音乐':'music','舞蹈':'dance','游戏':'game','知识':'knowledge','科技':'tech','运动':'sports','汽车':'car','生活':'life','美食':'food','动物圈':'animal','鬼畜':'kichiku','时尚':'fashion','娱乐':'ent','影视':'cinephile','原创':'origin','新人':'rookie'}
 # dict = {'全区':'all'}
@@ -51,5 +51,5 @@ if __name__ == '__main__':
         df = pd.DataFrame(htmls)
         data = pd.concat([data,df])
         print(f'{k}分区已完成！')
-    data.to_csv('D://桌面/b站原创top.csv',encoding='utf_8_sig',index=False)
+    data.to_csv('b站原创top.csv',encoding='utf_8_sig',index=False)
 
