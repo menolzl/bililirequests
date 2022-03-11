@@ -6,7 +6,7 @@ import datetime
 
 headers = {"Cookie":"","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"}
 
-# 获取需要抓取的日期
+# 制作一个生成器，遍历需要抓取的日期
 def get_date():
     a = datetime.date(2022, 3, 8)
     b = datetime.date(2022, 3, 10)
@@ -57,13 +57,21 @@ def parse_page(response,bv):
     return list
 
 
+# 标题为第一次写入，如果标题已有写入则说明文件已创建，判断i是否为标题内容，有则跳过以防重复写入。
 def save_data(data):
-    with open(f'弹幕/b站弹幕.csv', 'a',encoding="utf_8_sig") as f:
-        for i in data:
-            if i != 'bvid,弹幕':     # 判断标题是否有写入过，写入则忽略。
-                f.write(i+'\n')
-            else:
-                continue
+    path = '弹幕/b站弹幕.csv'
+    if os.path.exists(path):
+        with open(path, 'a',encoding="utf_8_sig") as f:
+            for i in data:
+                if i != 'bvid,弹幕':
+                    f.write(i + '\n')
+                else:
+                    continue
+    else:
+        with open(path, 'a',encoding="utf_8_sig") as f:
+            for i in data:
+                f.write(i + '\n')
+
 
 
 # 先获取oid，拿到oid后，按照需要的日期循环请求获取弹幕并装入list中，所有请求完成后将list存入csv文件。
