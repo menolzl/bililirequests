@@ -5,7 +5,7 @@
 **代码主要分三个：**
  *  **1 hotvideoinfo.py** 用于抓取b站热门视频榜的一些信息
  *  **2 upinfo.py** 以 1 hotvideoinfo.py 为基础抓取up主的基本信息
- *  **3 danmuallin.py** 和 **3 danmupervideo.py** 以 1 hotvideoinfo.py 为基础抓取视频弹幕，有分视频保存和整个一起保存两个版本。
+ *  **3 danmu.py** 以 1 hotvideoinfo.py 为基础抓取视频弹幕
  
 ***ps**:代码无法直接使用，需要补充cookie，另2 upinfo.py还需补充代理。*
 
