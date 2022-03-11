@@ -42,12 +42,14 @@ def get_page(oid,dt):
 
 def parse_page(response):
 # 将抓取结果按列拆分得到结果列表，正则取每个元素的中文部分。
+    list = []   
     result = response.split('\n')
     for i in result:
         pattern = re.compile('([\u4e00-\u9fa5]+)')
         data = re.findall(pattern,i)
         if data:
-            yield data
+            list.append(data[0])
+    return list
 
 
 def save_data(data):
