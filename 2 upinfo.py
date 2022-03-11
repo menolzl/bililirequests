@@ -14,7 +14,10 @@ def get_url():
 def get_page(uid):
     response1 = requests.get('https://api.bilibili.com/x/space/acc/info?mid=' + str(uid) + '&jsonp=jsonp',proxies=proxies,headers=headers)
     response2 = requests.get('https://api.bilibili.com/x/relation/stat?vmid=' + str(uid) + '&jsonp=jsonp',proxies=proxies,headers=headers)
-    return response1.json() , response2.json()
+    if response1 ==200:
+        return response1.json() , response2.json()
+    else:
+        return 0
 
 
 
@@ -34,9 +37,13 @@ if __name__ == '__main__':
     list = []
     for url in urls:
         json = get_page(url)
-        dict = parse_page(*json)
-        list.append(dict)
-        print(f'{url} 已完成')
+        if json == 0:
+            print(f'{url}抓取失败')
+            continue
+        else:
+            dict = parse_page(*json)
+            list.append(dict)
+            print(f'{url} 已完成')
     data = pd.DataFrame(list)
     data.to_csv('top100up主.csv', encoding='utf_8_sig', index=False)
     print('--全部完成--')
