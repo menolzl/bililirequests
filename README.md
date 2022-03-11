@@ -7,4 +7,6 @@
  *  **2 upinfo.py** 以 1 hotvideoinfo.py 为基础抓取全区top100up主的基本信息
  *  **3 danmuallin.py** 和 **3 danmupervideo.py** 以 1 hotvideoinfo.py 为基础抓取top20视频的弹幕，有分视频保存和整个一起保存两个版本。
  
+***ps**:代码无法直接使用，需要补充cookie，另2 upinfo.py还需补充代理。*
+
 ***本代码仅供学习使用。***
