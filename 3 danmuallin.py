@@ -47,7 +47,7 @@ def get_page(oid,dt):
 # 将抓取结果按列拆分得到结果列表，正则每个元素的中文部分。
 def parse_page(response,bv):
 
-    list = ['bvid,弹幕']   
+    list = ['bvid,弹幕']       # 以此为csv第一行标题
     result = response.split('\n')
     for i in result:
         pattern = re.compile('([\u4e00-\u9fa5]+)')
@@ -58,9 +58,12 @@ def parse_page(response,bv):
 
 
 def save_data(data):
-    with open(f'弹幕/视频弹幕.csv', 'a',encoding="utf_8_sig") as f:
+    with open(f'弹幕/b站弹幕.csv', 'a',encoding="utf_8_sig") as f:
         for i in data:
-            f.write(i+'\n')
+            if i != 'bvid,弹幕':     # 判断标题是否有写入过，写入则忽略。
+                f.write(i+'\n')
+            else:
+                continue
 
 
 # 先获取oid，拿到oid后，按照需要的日期循环请求获取弹幕并装入list中，所有请求完成后将list存入csv文件。
