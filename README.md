@@ -10,3 +10,6 @@
 ***ps**:代码无法直接使用，需要补充cookie，另2 upinfo.py还需补充代理。*
 
 ***本代码仅供学习使用。***
+
+另附基于此代码获取的数据制作的数据浅析报告，基于powerbi:
+[数据分析报告]:https://app.powerbi.com/view?r=eyJrIjoiNWRlOTdhOWUtMTA2OC00MzhhLTg1YzQtMGY2YmRkNWU2M2JiIiwidCI6IjUxZDU0NDY4LWE1ZTAtNDhjMi05MTE2LTJiYjFiOWQ2YTVkOSIsImMiOjN9
